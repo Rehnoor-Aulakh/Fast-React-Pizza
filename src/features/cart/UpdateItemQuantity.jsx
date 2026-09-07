@@ -18,9 +18,7 @@ export default function UpdateItemQuantity({ pizzaId }) {
       >
         -
       </Button>
-      <span className="rounded-sm bg-yellow-200 px-4 py-2 font-semibold text-stone-800">
-        {quantity}
-      </span>
+      <span className="text-sm font-semibold text-stone-800">{quantity}</span>
       <Button
         type="round"
         onClick={() => dispatch(increaseItemQuantity(pizzaId))}
