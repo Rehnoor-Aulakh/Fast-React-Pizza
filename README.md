@@ -23,3 +23,4 @@ Easier method is to export the updateName method in the slice itself, and then c
 
 dispatch(updateName(username));
 
+For performance optimization of the Selectors, look for the 'reselect' library of redux
