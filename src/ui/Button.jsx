@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Button({ children, disabled, to, type }) {
+export default function Button({ children, disabled, to, type, onClick }) {
   const base =
     'text-sm inline-block rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-yellow-200';
 
@@ -15,6 +15,17 @@ export default function Button({ children, disabled, to, type }) {
       <Link to={to} className={styles[type] || styles.primary}>
         {children}
       </Link>
+    );
+  }
+  if (onClick) {
+    return (
+      <button
+        className={styles[type] || styles.primary}
+        disabled={disabled}
+        onClick={onClick}
+      >
+        {children}
+      </button>
     );
   }
   return (

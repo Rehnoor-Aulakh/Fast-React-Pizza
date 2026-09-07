@@ -18,7 +18,6 @@ function CreateUser() {
     // then redirect to the menu page
     navigate('/menu');
   }
-
   return (
     <form onSubmit={handleSubmit}>
       <p className="mb-4 text-sm text-stone-600 md:text-base">
