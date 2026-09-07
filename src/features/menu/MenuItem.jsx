@@ -26,7 +26,7 @@ function MenuItem({ pizza }) {
       <img
         src={imageUrl}
         alt={name}
-        className={`h-44 rounded-sm ${soldOut ? 'opacity-70 grayscale' : ''}`}
+        className={`h-40 rounded-sm sm:h-52 ${soldOut ? 'opacity-70 grayscale' : ''}`}
       />
       <div className="flex grow flex-col pt-0.5">
         <p className="font-medium">{name}</p>
@@ -41,14 +41,17 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
-          {currentQuantity > 0 && <DeleteItem pizzaId={id} />}
+
+          <div className="hidden sm:block">
+            {currentQuantity > 0 && <DeleteItem pizzaId={id} />}
+          </div>
 
           {!soldOut && currentQuantity === 0 ? (
             <Button type="small" onClick={handleAddToCart}>
               Add to cart
             </Button>
           ) : (
-            <UpdateItemQuantity pizzaId={id} />
+            <UpdateItemQuantity pizzaId={id} className="flex-shrink-0" />
           )}
         </div>
       </div>

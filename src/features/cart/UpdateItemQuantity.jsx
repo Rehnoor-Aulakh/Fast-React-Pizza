@@ -6,12 +6,12 @@ import {
   increaseItemQuantity,
 } from './cartSlice';
 
-export default function UpdateItemQuantity({ pizzaId }) {
+export default function UpdateItemQuantity({ pizzaId, className }) {
   const quantity = useSelector(getCurrentQuantityById(pizzaId));
   const dispatch = useDispatch();
   if (quantity === 0) return null;
   return (
-    <div className="space-x-2 md:space-x-3">
+    <div className={`space-x-2 md:space-x-3 ${className}`}>
       <Button
         type="round"
         onClick={() => dispatch(decreaseItemQuantity(pizzaId))}

@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Button({ children, disabled, to, type, onClick }) {
   const base =
-    'text-sm inline-block rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-yellow-200';
+    'text-sm inline-block rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 sm:focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-yellow-200';
 
   const styles = {
     primary: base + ' px-4 py-3 md:px-6 md:py-4',
