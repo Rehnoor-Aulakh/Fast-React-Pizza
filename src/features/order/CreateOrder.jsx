@@ -27,6 +27,7 @@ function CreateOrder() {
     status: addressStatus,
     position,
     address,
+    error: addressError,
   } = useSelector((state) => state.user);
   const isLoadingAddress = addressStatus === 'loading';
   const formErrors = useActionData();
@@ -80,6 +81,12 @@ function CreateOrder() {
               disabled={isLoadingAddress}
               defaultValue={address}
             />
+            {addressStatus === 'error' && (
+              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs font-semibold text-red-600">
+                {addressError ||
+                  'Something went wrong. Please enter your address manually.'}
+              </p>
+            )}
           </div>
           {!position.latitude && !position.longitude && (
             <span className="absolute right-[3px] z-50">
@@ -113,6 +120,15 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <input
+            type="hidden"
+            name="position"
+            value={
+              position.longitude && position.latitude
+                ? `${position.latitude},${position.longitude}`
+                : ''
+            }
+          />
           <Button disabled={isSubmitting || isLoadingAddress} type="primary">
             {isSubmitting
               ? 'Placing order...'
@@ -138,7 +154,7 @@ export async function action({ request }) {
       'Please give a valid phone number. We might need it to contact you.';
   }
   if (Object.keys(errors).length > 0) return errors;
-  console.log('hi');
+
   // if everything is okay, create new order and redirect
   const newOrder = await createOrder(order);
   // DO NOT OVERUSE
